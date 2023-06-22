@@ -3,9 +3,9 @@ import sqlite3
 conn =sqlite3.connect('Contact.db')
 cur = conn.cursor()
 #Création de la table Contact
-"""cur.execute(
+cur.execute(
     "CREATE TABLE Contact(nom text, prenom text, email text, telephone integer)"
-)"""
+)
 #declaration de la class contact
 class Contact:
     def __init__(self, nom, prenom, email, telephone):
@@ -47,11 +47,12 @@ class Contact:
 #Instance de la class Contact
 contact = Contact("Aidara", "Cherif", "bakis1011@gmail.com", 775851112)
 contact.inserer()
-"""ajouter_contact("Aidara", "Moulaye", "moulaye@gmail.com", 774673332)
-    modifier_contact()
-    supprimer_contact()
-    afficher_liste_contact()
-    rechercher_numero_contact()"""
+Contact.ajouter_contact("Aidara", "Moulaye", "moulaye@gmail.com", 774673332)    
+Contact.ajouter_contact("Aidara", "Fanta", "fantasiré@gmail.com", 784673332)    
+Contact.modifier_contact(707202863, 775851112)
+Contact.supprimer_contact(775851112)
+Contact.afficher_liste_contact()
+Contact.rechercher_numero_contact(774673332)
 #Insertion des données de l'objet dans la base de données
 cur.execute("INSERT INTO Contact VALUES (?, ?, ?, ?)", (contact.nom, contact.prenom, contact.email, contact.telephone))
 conn.commit()
